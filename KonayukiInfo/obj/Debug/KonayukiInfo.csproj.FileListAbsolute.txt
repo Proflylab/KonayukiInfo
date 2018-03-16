@@ -1,0 +1,10 @@
+c:\users\lefiya\source\repos\KonayukiInfo\KonayukiInfo\bin\Debug\KonayukiInfo.exe.config
+c:\users\lefiya\source\repos\KonayukiInfo\KonayukiInfo\bin\Debug\KonayukiInfo.exe
+c:\users\lefiya\source\repos\KonayukiInfo\KonayukiInfo\bin\Debug\KonayukiInfo.pdb
+c:\users\lefiya\source\repos\KonayukiInfo\KonayukiInfo\obj\Debug\KonayukiInfo.csprojResolveAssemblyReference.cache
+c:\users\lefiya\source\repos\KonayukiInfo\KonayukiInfo\obj\Debug\KonayukiInfo.frmMain.resources
+c:\users\lefiya\source\repos\KonayukiInfo\KonayukiInfo\obj\Debug\KonayukiInfo.Properties.Resources.resources
+c:\users\lefiya\source\repos\KonayukiInfo\KonayukiInfo\obj\Debug\KonayukiInfo.csproj.GenerateResource.cache
+c:\users\lefiya\source\repos\KonayukiInfo\KonayukiInfo\obj\Debug\KonayukiInfo.csproj.CoreCompileInputs.cache
+c:\users\lefiya\source\repos\KonayukiInfo\KonayukiInfo\obj\Debug\KonayukiInfo.exe
+c:\users\lefiya\source\repos\KonayukiInfo\KonayukiInfo\obj\Debug\KonayukiInfo.pdb
