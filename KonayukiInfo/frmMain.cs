@@ -11,6 +11,9 @@ using System.Windows.Forms;
 using System.IO;
 using MediaInfoLib;
 using MetroFramework.Forms;
+using Microsoft.WindowsAPICodePack.Shell;
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace KonayukiInfo
 {
@@ -30,12 +33,38 @@ namespace KonayukiInfo
         }
         private void frmMain_Load(object sender, EventArgs e)
         {
+            lblVersion.Text = $"{Assembly.GetExecutingAssembly().GetName().Version.ToString()}";
             MediaInfo MI = new MediaInfo();
             MI.Open(file);
             MI.Option("Complete", "0");
-            rtbInfo.Text = MI.Inform();
+            foreach (var line in Regex.Split(MI.Inform(), "\r\n"))
+            {
+                switch (line)
+                {
+                    case "General":
+                    case "Video":
+                    case "Audio":
+                    case "Text":
+                    case "Other":
+                    case "Image":
+                    case "Menu":
+                        rtbInfo.SelectionFont = new Font(rtbInfo.SelectionFont.FontFamily, 10f, FontStyle.Bold);
+                        rtbInfo.SelectionColor = Color.FromArgb(255, 51, 153);
+                        rtbInfo.SelectedText = line + "\r\n";
+                        break;
+                    default:
+                        rtbInfo.SelectionColor = Color.Black;
+                        rtbInfo.SelectedText += line + "\r\n";
+                        break;
+                }
+            }
             MI.Close();
+            ShellFile shellFile = ShellFile.FromFilePath(file);
+            ShellThumbnail thumbnail = shellFile.Thumbnail;
+            picThumbnail.Image = thumbnail.Bitmap;
             lblFile.Text = Path.GetFileName(file);
+            lblDateCreated.Text = "Created : " + new FileInfo(file).CreationTime.ToString();
+            lblDateModified.Text = "Modified : " + new FileInfo(file).LastWriteTime.ToString();
             SetToolTip(lblFile, Path.GetFileName(file));
         }
 
