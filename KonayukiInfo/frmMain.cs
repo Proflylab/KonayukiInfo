@@ -39,23 +39,22 @@ namespace KonayukiInfo
             MI.Option("Complete", "0");
             foreach (var line in Regex.Split(MI.Inform(), "\r\n"))
             {
-                switch (line)
+                if (line.IndexOf("General") == 0 ||
+                    line.IndexOf("Video") == 0 ||
+                    line.IndexOf("Audio") == 0 ||
+                    line.IndexOf("Text") == 0 ||
+                    line.IndexOf("Other") == 0 ||
+                    line.IndexOf("Image") == 0 ||
+                    line.IndexOf("Menu") == 0)
                 {
-                    case "General":
-                    case "Video":
-                    case "Audio":
-                    case "Text":
-                    case "Other":
-                    case "Image":
-                    case "Menu":
-                        rtbInfo.SelectionFont = new Font(rtbInfo.SelectionFont.FontFamily, 10f, FontStyle.Bold);
-                        rtbInfo.SelectionColor = Color.FromArgb(255, 51, 153);
-                        rtbInfo.SelectedText = line + "\r\n";
-                        break;
-                    default:
-                        rtbInfo.SelectionColor = Color.Black;
-                        rtbInfo.SelectedText += line + "\r\n";
-                        break;
+                    rtbInfo.SelectionFont = new Font(rtbInfo.SelectionFont.FontFamily, 10f, FontStyle.Bold);
+                    rtbInfo.SelectionColor = Color.FromArgb(255, 51, 153);
+                    rtbInfo.SelectedText = line + "\r\n";
+                }
+                else
+                {
+                    rtbInfo.SelectionColor = Color.Black;
+                    rtbInfo.SelectedText += line + "\r\n";
                 }
             }
             MI.Close();
